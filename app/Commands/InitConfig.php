@@ -4,6 +4,7 @@ namespace App\Commands;
 
 use LaravelZero\Framework\Commands\Command;
 use Spatie\Regex\Regex;
+use Storage;
 
 class InitConfig extends Command
 {
@@ -39,7 +40,7 @@ class InitConfig extends Command
 
     private function writeVariables($variables)
     {
-        if (file_exists(base_path('.env')) && !$this->confirm('a .env file does already exist, do you want to overwrite it?')) {
+        if (Storage::exists('.env') && !$this->confirm('a .env file does already exist, do you want to overwrite it?')) {
             return;
         }
 
@@ -49,7 +50,7 @@ class InitConfig extends Command
             $contents = Regex::replace("/^{$variable}=.*/m", $variable.'='.$value, $contents)->result();
         }
 
-        file_put_contents(base_path('.env'), $contents);
+        Storage::put('.env', $contents);
     }
 
     private function askVariables()
