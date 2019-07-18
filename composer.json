@@ -1,6 +1,6 @@
 {
     "name": "teamnovu/novu-backup",
-    "description": "The Laravel Zero Framework.",
+    "description": "novu backup cli.",
     "keywords": ["framework", "laravel", "laravel zero", "console", "cli"],
     "homepage": "https://github.com/teamnovu/novu-backup/",
     "type": "project",
